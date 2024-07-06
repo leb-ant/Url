@@ -17,7 +17,7 @@
 
     "autoload": {
         "psr-4": {
-            "Lebant69\\url\\": "src/"
+            "Lebant69\\Url\\": "src/"
         }
     }
 }
