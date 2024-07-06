@@ -3,7 +3,7 @@ namespace Lebant69\Url;
 
 class Url
 {
-    public static function build(array $components, bool $trailingSlash): ?string
+    public static function build(array $components, bool $trailingSlash = false): ?string
     {
         $path = '';
         $schema = empty($components['schema']) ? 'https' : $components['schema'];
