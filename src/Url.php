@@ -6,7 +6,7 @@ class Url
     public static function build(array $components, bool $trailingSlash = false): ?string
     {
         $path = '';
-        $schema = empty($components['schema']) ? 'https' : $components['schema'];
+        $scheme = empty($components['scheme']) ? 'https' : $components['scheme'];
         $host = $components['host'];
 
         if (!is_array($components['path'])) {
@@ -27,7 +27,7 @@ class Url
             $path .= "/";
         }
 
-        return sprintf("%s://%s%s", $schema, $host, $path);
+        return sprintf("%s://%s%s", $scheme, $host, $path);
     }
 
     public static function isSubDomainOf(string $subDomain, string $domain): bool
