@@ -1,0 +1,6 @@
+.idea/
+nbproject/
+vendor/
+composer.lock
+
+#do not ignore composer.json, it's required as this is git repo

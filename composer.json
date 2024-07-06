@@ -1,0 +1,23 @@
+{
+    "name": "lebant69/url",
+    "description": "Url functionality",
+    "keywords": ["url"],
+    "license" : "proprietary",
+    "authors" : [
+        {
+            "name": "lebant",
+            "email": "lebant69@gmail.com",
+            "homepage": "https://github.com/leb-ant/Url"
+        }
+    ],
+   
+    "require": {
+        "php": ">=8.2"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Lebant69\\Url\\": "src/"
+        }
+    }
+}
