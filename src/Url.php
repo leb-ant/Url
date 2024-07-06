@@ -13,6 +13,12 @@ class Url
             $components['path'] = [$components['path']];
         }
 
+        $components['path'] = array_filter($components['path']);
+
+        if (empty($components['host']) || empty($components['path'])) {
+            throw new \Exception("Host and path required");
+        }
+
         foreach ($components['path'] as $part) {
             $path .= '/' . trim($part, " \t\n\r\0\x0B\\/");
         }
