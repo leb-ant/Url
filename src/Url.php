@@ -3,17 +3,25 @@ namespace Lebant69\Url;
 
 class Url
 {
-    const SLASH = "/";
-
-    public static function build(array $components): ?string
+    public static function build(array $components, bool $trailingSlash): ?string
     {
+        $path = '';
         $schema = empty($components['schema']) ? 'https' : $components['schema'];
-
         $host = $components['host'];
-        $path = $components['path'];
 
-        $url = sprintf("%s://%s%s", $schema, $host, $path);
-        return $url;
+        if (!is_array($components['path'])) {
+            $components['path'] = [$components['path']];
+        }
+
+        foreach ($components['path'] as $part) {
+            $path .= '/' . trim($part, " \t\n\r\0\x0B\\/");
+        }
+
+        if ($trailingSlash) {
+            $path .= "/";
+        }
+
+        return sprintf("%s://%s%s", $schema, $host, $path);
     }
 
     public static function isSubDomainOf(string $subDomain, string $domain): bool
@@ -43,7 +51,7 @@ class Url
 
 	public static function addTrailingSlash(string $url): string
 	{
-		return rtrim($url, self::SLASH) . self::SLASH;
+		return rtrim($url, '/') . '/';
 	}
 
 	public static function concat(array $parts, array $params = []): string
